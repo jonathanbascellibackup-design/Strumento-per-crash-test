@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Il Mio Strumento per Mac</title>
+    <style>
+        /* Stile Generale scuro per far risaltare il Neon */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            line-height: 1.6;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background: #2d2d2d;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            text-align: center; /* Centra tutto il testo nel container */
+        }
+
+        h1 { color: #fff; text-align: center; }
+        .description { margin-bottom: 30px; border-bottom: 1px solid #444; padding-bottom: 20px; }
+
+        /* --- STILE NEON / LED PER "SOSTIENICI" (AGGIORNATO) --- */
+        .neon-title {
+            text-align: center;
+            font-size: 1.8em; /* Ridotta la dimensione del carattere */
+            font-weight: bold;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            margin-left: auto; /* Centra orizzontalmente */
+            margin-right: auto; /* Centra orizzontalmente */
+            max-width: 90%; /* Assicura che non esca dai bordi */
+            
+            /* Effetto Fluorescente Blu/Ciano */
+            text-shadow: 
+                0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 20px #00d2ff,
+                0 0 30px #00d2ff,
+                0 0 40px #00d2ff;
+            animation: flicker 1.5s infinite alternate; /* Effetto sfarfallio LED */
+        }
+
+        /* Animazione sfarfallio LED */
+        @keyframes flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                text-shadow: 
+                    0 0 5px #fff,
+                    0 0 10px #fff,
+                    0 0 20px #00d2ff,
+                    0 0 30px #00d2ff,
+                    0 0 40px #00d2ff;
+            }
+            20%, 24%, 55% { text-shadow: none; }
+        }
+
+        .donazione-box {
+            border: 2px solid #00d2ff; /* Bordo coordinato col neon */
+            padding: 25px;
+            border-radius: 12px;
+            background-color: #252525;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+            max-width: 400px; /* Limita la larghezza del box donazione */
+            margin-left: auto; /* Centra il box nel container */
+            margin-right: auto; /* Centra il box nel container */
+        }
+
+        .goal-text {
+            color: #ffcc00; /* Giallo per l'obiettivo */
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        input[type="number"] {
+            width: 80%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #444;
+            background-color: #333;
+            color: #fff;
+            font-size: 1em;
+        }
+
+        /* --- STILE TASTO DONA ACCATTIVANTE --- */
+        .btn-dona {
+            background: linear-gradient(45deg, #00d2ff, #3a7bd5); /* Gradiente moderno */
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .btn-dona:hover {
+            transform: translateY(-3px); /* Effetto sollevamento */
+            box-shadow: 0 6px 20px rgba(0, 210, 255, 0.6);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Il Mio Strumento</h1>
+        
+        <div class="description">
+            <p>Benvenuti! Questo strumento è progettato specificamente per macOS.</p>
+        </div>
+
+        <div class="donazione-box">
+            <div class="neon-title">SOSTIENICI</div>
+            
+            <p class="goal-text">🎯 OBIETTIVO: Versione Windows (.exe)</p>
+            <p>Al raggiungimento di **1 mBTC** di donazioni totali, pubblicherò la versione per Windows (.exe)! Aiutami a portare questo strumento a tutti.</p>
+            
+            <label for="amount">Importo in mBTC:</label><br>
+            <input type="number" id="amount" placeholder="Es. 0.1" step="0.1" min="0">
+            
+            <button class="btn-dona" onclick="inviaDonazione()">DONA ORA 🚀</button>
+        </div>
+    </div>
+
+    <script>
+        function inviaDonazione() {
+            // bc1q07qywwssag8zlc5vaw036a66qrh5zchtqs2tej
+            var indirizzo = "#codice wallet"; 
+            // *************************************************
+
+            var mbtc = document.getElementById('amount').value;
+            
+            if(mbtc > 0 && indirizzo !== "#codice wallet") {
+                // Converte mBTC in BTC (1 mBTC = 0.001 BTC)
+                var btc = mbtc / 1000;
+                // Apre il wallet dell'utente con l'importo già impostato
+                window.location.href = "bitcoin:" + indirizzo + "?amount=" + btc;
+            } else if (indirizzo === "#codice wallet") {
+                alert("Errore tecnico: L'indirizzo del wallet non è stato configurato dall'amministratore.");
+            } else {
+                alert("Per favore, inserisci un importo valido in mBTC.");
+            }
+        }
+    </script>
+
+</body>
+</html>
