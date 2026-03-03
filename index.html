@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Il Mio Strumento per Mac</title>
     <style>
-        /* Stile Generale scuro per far risaltare il Neon */
+        /* Stile Generale scuro */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #1a1a1a;
@@ -24,145 +24,133 @@
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            text-align: center; /* Centra tutto il testo nel container */
+            text-align: center;
         }
 
-        h1 { color: #fff; text-align: center; }
-        .description { margin-bottom: 30px; border-bottom: 1px solid #444; padding-bottom: 20px; }
+        h1 { color: #fff; margin-bottom: 10px; }
+        .description { margin-bottom: 20px; border-bottom: 1px solid #444; padding-bottom: 20px; }
 
-        /* --- STILE NEON / LED PER "SOSTIENICI" (AGGIORNATO) --- */
+        /* --- SEZIONE DOWNLOAD --- */
+        .download-box {
+            margin: 25px 0;
+            padding: 20px;
+            background: #333;
+            border-radius: 10px;
+            border: 1px dashed #00d2ff;
+        }
+
+        .btn-download {
+            background: #00d2ff;
+            color: #000;
+            padding: 12px 25px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        .btn-download:hover { background: #fff; }
+
+        /* --- STILE NEON SOSTIENICI --- */
         .neon-title {
-            text-align: center;
-            font-size: 1.8em; /* Ridotta la dimensione del carattere */
+            font-size: 1.8em;
             font-weight: bold;
             color: #fff;
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 15px;
-            margin-left: auto; /* Centra orizzontalmente */
-            margin-right: auto; /* Centra orizzontalmente */
-            max-width: 90%; /* Assicura che non esca dai bordi */
-            
-            /* Effetto Fluorescente Blu/Ciano */
-            text-shadow: 
-                0 0 5px #fff,
-                0 0 10px #fff,
-                0 0 20px #00d2ff,
-                0 0 30px #00d2ff,
-                0 0 40px #00d2ff;
-            animation: flicker 1.5s infinite alternate; /* Effetto sfarfallio LED */
+            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #00d2ff, 0 0 30px #00d2ff;
+            animation: flicker 1.5s infinite alternate;
         }
 
-        /* Animazione sfarfallio LED */
         @keyframes flicker {
             0%, 18%, 22%, 25%, 53%, 57%, 100% {
-                text-shadow: 
-                    0 0 5px #fff,
-                    0 0 10px #fff,
-                    0 0 20px #00d2ff,
-                    0 0 30px #00d2ff,
-                    0 0 40px #00d2ff;
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #00d2ff, 0 0 30px #00d2ff;
             }
             20%, 24%, 55% { text-shadow: none; }
         }
 
         .donazione-box {
-            border: 2px solid #00d2ff; /* Bordo coordinato col neon */
+            border: 2px solid #00d2ff;
             padding: 25px;
             border-radius: 12px;
             background-color: #252525;
-            text-align: center;
             box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
-            max-width: 400px; /* Limita la larghezza del box donazione */
-            margin-left: auto; /* Centra il box nel container */
-            margin-right: auto; /* Centra il box nel container */
+            margin-top: 30px;
         }
 
-        .goal-text {
-            color: #ffcc00; /* Giallo per l'obiettivo */
-            font-weight: bold;
-            font-size: 1.1em;
-            margin-bottom: 15px;
-        }
+        .goal-text { color: #ffcc00; font-weight: bold; margin-bottom: 15px; }
 
         input[type="number"] {
-            width: 80%;
+            width: 70%;
             padding: 12px;
             margin: 10px 0;
             border-radius: 8px;
             border: 1px solid #444;
             background-color: #333;
             color: #fff;
-            font-size: 1em;
         }
 
-        /* --- STILE TASTO DONA ACCATTIVANTE --- */
         .btn-dona {
-            background: linear-gradient(45deg, #00d2ff, #3a7bd5); /* Gradiente moderno */
+            background: linear-gradient(45deg, #00d2ff, #3a7bd5);
             color: white;
             border: none;
             padding: 15px 30px;
-            font-size: 1.2em;
+            font-size: 1.1em;
             font-weight: bold;
-            text-transform: uppercase;
             border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
-            transition: all 0.3s ease;
             margin-top: 15px;
+            transition: 0.3s;
         }
 
-        .btn-dona:hover {
-            transform: translateY(-3px); /* Effetto sollevamento */
-            box-shadow: 0 6px 20px rgba(0, 210, 255, 0.6);
-        }
+        .btn-dona:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0, 210, 255, 0.6); }
 
+        footer { margin-top: 40px; font-size: 0.8em; color: #666; }
     </style>
 </head>
 <body>
-    
-    <div class="container">
-        <h1>Strumento per crash test</h1>
-        
-    <div class="container">
-        <h1>ECCO LO STRUMENTO, PUOI SCARICARLO GRATIS QUI:</h1>
-   
 
+    <div class="container">
+        <h1>Crash Test Tool 🚀</h1>
         
         <div class="description">
-            <p>Benvenuti! Questo strumento è progettato specificamente per macOS.</p>
+            <p>Strumento professionale per testare la stabilità di sistemi macOS.</p>
+        </div>
+
+        <div class="download-box">
+            <h3>ECCO LO STRUMENTO, SCARICALO GRATIS:</h3>
+            <a href="NOME_DEL_TUO_FILE.zip" download class="btn-download">🍎 SCARICA PER MAC (.zip)</a>
         </div>
 
         <div class="donazione-box">
             <div class="neon-title">SOSTIENICI</div>
-            
             <p class="goal-text">🎯 OBIETTIVO: Versione Windows (.exe)</p>
-            <p>Al raggiungimento di **1 mBTC** di donazioni totali, pubblicherò la versione per Windows (.exe)! Aiutami a portare questo strumento a tutti.</p>
+            <p>Al raggiungimento di <strong>1 mBTC</strong> pubblicherò la versione .exe!</p>
             
             <label for="amount">Importo in mBTC:</label><br>
             <input type="number" id="amount" placeholder="Es. 0.1" step="0.1" min="0">
             
-            <button class="btn-dona" onclick="inviaDonazione()">DONA ORA 🚀</button>
+            <button class="btn-dona" onclick="inviaDonazione()">DONA ORA ₿</button>
         </div>
+
+        <footer>
+            Distribuito sotto Licenza MIT - Jonathan Bascelli 2026
+        </footer>
     </div>
 
     <script>
         function inviaDonazione() {
-            // bc1q07qywwssag8zlc5vaw036a66qrh5zchtqs2tej
-            var indirizzo = "#codice wallet"; 
-            // *************************************************
-
+            var indirizzo = "bc1q07qywssag8zlc5vaw036a66qrh5zchtqs2tej"; 
             var mbtc = document.getElementById('amount').value;
             
-            if(mbtc > 0 && indirizzo !== "#codice wallet") {
-                // Converte mBTC in BTC (1 mBTC = 0.001 BTC)
+            if(mbtc > 0) {
                 var btc = mbtc / 1000;
-                // Apre il wallet dell'utente con l'importo già impostato
                 window.location.href = "bitcoin:" + indirizzo + "?amount=" + btc;
-            } else if (indirizzo === "#codice wallet") {
-                alert("Errore tecnico: L'indirizzo del wallet non è stato configurato dall'amministratore.");
             } else {
-                alert("Per favore, inserisci un importo valido in mBTC.");
+                alert("Inserisci un importo in mBTC per supportare la versione Windows!");
             }
         }
     </script>
